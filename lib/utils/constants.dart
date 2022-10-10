@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static int primaryColorCode = (0xff0000ff);
   static Color primaryColor = Color(primaryColorCode);
+  static Color textFieldBorderColor = const Color(0xffD9D9D9);
+  static Color textFieldLableColor = const Color(0xff828385);
+  static Color loginScreenPrimaryColor = const Color(0xff993177d8);
   static String appName = '';
+  static String appFont = 'Baloo 2';
 }
 
 class AppConstants {

@@ -24,17 +24,17 @@ class GlobalService extends GetxService {
     userRefreshToken = await localStorage.readSecureData('refreshToken');
   }
 
-  @override
-  void onInit() {
-    getUserDataOnInit();
-    super.onInit();
-  }
+  // @override
+  // void onInit() {
+  //   getUserDataOnInit();
+  //   super.onInit();
+  // }
 
   String initialRoute() {
     if (userAccessToken != null) {
-      return 'home';
+      return 'login';
     } else {
-      return 'home';
+      return 'login';
     }
   }
 }

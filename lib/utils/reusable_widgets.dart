@@ -29,7 +29,7 @@ Widget verticalSpacing(double giveHeigh) => SizedBox(
     );
 
 Widget horizontalSpacing(double giveWidth) => SizedBox(
-      height: giveWidth,
+      width: giveWidth,
     );
 
 Widget iconWidget(giveIcon, Color? giveColor, double? giveSize) => Icon(
@@ -50,13 +50,14 @@ Widget text({
   FontWeight fontweight = FontWeight.normal,
   Color textColor = Colors.black,
   double? textHeight,
-  String fontfamily = 'arial',
+  String fontfamily = 'Baloo 2',
 }) =>
     Text(
       giveText,
       style: GoogleFonts.getFont(
         fontfamily,
         textStyle: TextStyle(
+          color: textColor,
           fontSize: fontsize.sp,
           fontWeight: fontweight,
           height: textHeight,
@@ -91,18 +92,13 @@ Widget textField({
   double? giveWidth,
 }) =>
     SizedBox(
-      height: 51,
+      height: 60.sp,
       width: giveWidth,
       child: TextFormField(
         onChanged: onFieldEntry,
         controller: fieldController,
         decoration: InputDecoration(
-          labelText: giveHint,
-          labelStyle: TextStyle(
-              color: labelColor,
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              fontFamily: null),
+          label: text(giveText: giveHint, textColor: labelColor, fontsize: 15),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(7),
@@ -139,7 +135,7 @@ Widget button(
         Color borderColor = Colors.white,
         Color buttonTextColor = Colors.white,
         double textSize = 17,
-        FontWeight textWieght = FontWeight.w600}) =>
+        FontWeight textWieght = FontWeight.normal}) =>
     SizedBox(
       height: buttonHeight,
       width: buttonWidth,
@@ -152,15 +148,11 @@ Widget button(
           ),
         ),
         onPressed: onPress,
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            color: buttonTextColor,
-            fontFamily: null,
-            fontWeight: textWieght,
-            fontSize: textSize,
-          ),
-        ),
+        child: text(
+            giveText: buttonText,
+            fontsize: textSize,
+            fontweight: textWieght,
+            textColor: buttonTextColor),
       ),
     );
 
