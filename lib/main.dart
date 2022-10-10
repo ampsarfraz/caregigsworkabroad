@@ -1,13 +1,15 @@
+import 'package:caregigsworkabroad/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:caregigsworkabroad/initial_bindings.dart';
 import 'package:caregigsworkabroad/utils/global_service.dart';
 import 'package:caregigsworkabroad/utils/constants.dart';
 import 'package:get/get.dart';
-import 'utils/reusable_widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  Get.put(GlobalService(), permanent: true);
   WidgetsFlutterBinding.ensureInitialized();
+  Get.put(GlobalService(), permanent: true);
+  await GlobalService.to.getUserDataOnInit();
   runApp(const MyApp());
 }
 
@@ -16,17 +18,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return annotedRegion(
-      GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppTheme.appName,
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            primarySwatch:
-                MaterialColor(AppTheme.primaryColorCode, appPrimaryColor)),
-        initialBinding: InitialBindings(),
-        initialRoute: GlobalService.to.initialRoute(),
-      ),
+    return ScreenUtilInit(
+      useInheritedMediaQuery: true,
+      builder: (_, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: AppTheme.appName,
+          theme: ThemeData(
+              brightness: Brightness.dark,
+              primarySwatch:
+                  MaterialColor(AppTheme.primaryColorCode, appPrimaryColor)),
+          initialBinding: InitialBindings(),
+          initialRoute: GlobalService.to.initialRoute(),
+          getPages: AppPages.pages,
+        );
+      },
     );
   }
 }

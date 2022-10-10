@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // widgets to change statusbarcolor
 Widget annotedRegion(Widget givechild) => AnnotatedRegion<SystemUiOverlayStyle>(
@@ -56,7 +57,7 @@ Widget text({
       style: GoogleFonts.getFont(
         fontfamily,
         textStyle: TextStyle(
-          fontSize: fontsize,
+          fontSize: fontsize.sp,
           fontWeight: fontweight,
           height: textHeight,
         ),

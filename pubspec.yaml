@@ -44,7 +44,12 @@ dependencies:
   flutter_secure_storage: ^6.0.0
   # DateTime
   intl: ^0.17.0
+  #api connection
   dio: ^4.0.6
+  #svg image rendenring
+  flutter_svg: ^1.1.5
+  #view port
+  flutter_screenutil: ^5.5.4
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +74,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
