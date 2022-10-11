@@ -50,6 +50,8 @@ dependencies:
   flutter_svg: ^1.1.5
   #view port
   flutter_screenutil: ^5.5.4
+  #otp field package
+  otp_text_field: ^1.1.3
 
 dev_dependencies:
   flutter_test:

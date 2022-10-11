@@ -3,12 +3,14 @@ import 'package:caregigsworkabroad/screens/_screen_bindindgs/login_screen_bindin
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/signup_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/home_screen.dart';
 import 'package:caregigsworkabroad/screens/login_screen.dart';
-import 'package:caregigsworkabroad/screens/signup_screen.dart';
+import 'package:caregigsworkabroad/screens/signupflow/email_verification.dart';
+import 'package:caregigsworkabroad/screens/signupflow/signup_screen.dart';
 import 'package:get/get.dart';
 
 class Routes {
   static const String login = '/login';
   static const String signup = '/signup';
+  static const String emailVerification = '/EmailVerification';
   static const String home = '/home';
 }
 
@@ -26,5 +28,9 @@ class AppPages {
         name: Routes.signup,
         page: () => const SignUpScreen(),
         binding: SignupScreenBindings()),
+    GetPage(
+      name: Routes.emailVerification,
+      page: () => const EmailVerification(),
+    ),
   ];
 }

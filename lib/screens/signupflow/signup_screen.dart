@@ -1,8 +1,8 @@
-import 'package:caregigsworkabroad/services/login_services.dart';
+import 'package:caregigsworkabroad/services/signup_services.dart';
 import 'package:caregigsworkabroad/utils/common_imports.dart';
 
-class LoginScreen extends GetWidget<LoginService> {
-  const LoginScreen({super.key});
+class SignUpScreen extends GetWidget<SignUpServices> {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class LoginScreen extends GetWidget<LoginService> {
             ),
             verticalSpacing(30.sp),
             Flexible(
+              fit: FlexFit.tight,
               flex: 3,
               child: Column(
                 children: [
@@ -43,25 +44,16 @@ class LoginScreen extends GetWidget<LoginService> {
                               onFieldEntry: null,
                               borderColor: AppTheme.textFieldBorderColor,
                               labelColor: AppTheme.textFieldLableColor),
-                          verticalSpacing(10.sp),
-                          alignRight(
-                            InkWell(
-                              onTap: () {},
-                              child: text(
-                                  giveText: 'Forgot Password?',
-                                  textColor: AppTheme.loginScreenPrimaryColor,
-                                  fontsize: 15.sp),
-                            ),
-                          ),
-                          verticalSpacing(25.sp),
+                          verticalSpacing(30.sp),
                           button(
                               buttonWidth: double.infinity,
                               buttonHeight: 60.sp,
                               buttonColor: AppTheme.loginScreenPrimaryColor,
                               onPress: () {
                                 Get.focusScope!.unfocus();
+                                Get.toNamed('EmailVerification');
                               },
-                              buttonText: 'Login Now',
+                              buttonText: 'Create Account',
                               textSize: 20),
                         ],
                       ),
@@ -72,17 +64,17 @@ class LoginScreen extends GetWidget<LoginService> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       text(
-                          giveText: 'Don\'t have an account?',
+                          giveText: 'Already have an account?',
                           fontsize: 20.sp,
-                          textColor: const Color(0xff7D8183)),
+                          textColor: AppTheme.commonTextColor),
                       horizontalSpacing(5),
                       InkWell(
                         onTap: () {
                           Get.focusScope!.unfocus();
-                          Get.toNamed('signup');
+                          Get.back();
                         },
                         child: text(
-                            giveText: 'Apply Now',
+                            giveText: 'Log in',
                             fontsize: 20.sp,
                             textColor: const Color(0xff6597DB)),
                       )
@@ -90,7 +82,7 @@ class LoginScreen extends GetWidget<LoginService> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
