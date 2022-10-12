@@ -3,6 +3,8 @@
 import 'package:get/get.dart';
 
 class HomeScreenController extends GetxController {
+  RxBool showImage = false.obs;
+  RxString imageString = ''.obs;
   @override
   void onInit() {
     super.onInit();

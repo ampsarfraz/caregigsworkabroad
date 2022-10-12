@@ -1,3 +1,4 @@
+import 'package:caregigsworkabroad/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,8 +17,8 @@ Widget annotedRegion(Widget givechild) => AnnotatedRegion<SystemUiOverlayStyle>(
 
 Widget annotedRegionLightIcon(Widget givechild) =>
     AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+      value: SystemUiOverlayStyle(
+        statusBarColor: AppTheme.primaryColor,
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
       ),
@@ -54,6 +55,7 @@ Widget text({
 }) =>
     Text(
       giveText,
+      textAlign: TextAlign.start,
       style: GoogleFonts.getFont(
         fontfamily,
         textStyle: TextStyle(
@@ -77,27 +79,34 @@ Widget alignRight(giveChild) => Align(
     );
 
 Widget alignleft(giveChild) => Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.centerLeft,
       child: giveChild,
     );
 
 // formfield widgets
-Widget textField({
-  required TextEditingController fieldController,
-  required String giveHint,
-  required void Function(String)? onFieldEntry,
-  Color labelColor = Colors.white,
-  Color borderColor = Colors.white,
-  double? giveHeight,
-  double? giveWidth,
-}) =>
-    SizedBox(
+Widget textField(
+        {required TextEditingController fieldController,
+        required String giveHint,
+        required void Function(String)? onFieldEntry,
+        Color labelColor = Colors.transparent,
+        Color borderColor = Colors.transparent,
+        double? giveHeight,
+        double? giveWidth,
+        bool alignLabelasHint = false,
+        Color backgroundColor = Colors.white}) =>
+    Container(
       height: 60.sp,
+      decoration: BoxDecoration(
+          color: backgroundColor, borderRadius: BorderRadius.circular(12)),
       width: giveWidth,
       child: TextFormField(
         onChanged: onFieldEntry,
         controller: fieldController,
         decoration: InputDecoration(
+          floatingLabelBehavior: alignLabelasHint
+              ? FloatingLabelBehavior.never
+              : FloatingLabelBehavior.auto,
+          alignLabelWithHint: alignLabelasHint,
           label: text(giveText: giveHint, textColor: labelColor, fontsize: 15),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(

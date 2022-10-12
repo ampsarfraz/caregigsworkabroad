@@ -34,7 +34,7 @@ class GlobalService extends GetxService {
     if (userAccessToken != null) {
       return 'login';
     } else {
-      return 'login';
+      return 'HomePage';
     }
   }
 }

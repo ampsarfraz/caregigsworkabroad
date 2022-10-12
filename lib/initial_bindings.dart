@@ -6,6 +6,6 @@ class InitialBindings extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeScreenController());
-    Get.put(EndpointService(), permanent: true);
+    Get.lazyPut(() => EndpointService());
   }
 }

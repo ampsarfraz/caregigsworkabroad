@@ -60,6 +60,7 @@ class LoginScreen extends GetWidget<LoginService> {
                               buttonColor: AppTheme.loginScreenPrimaryColor,
                               onPress: () {
                                 Get.focusScope!.unfocus();
+                                Get.toNamed('HomePage');
                               },
                               buttonText: 'Login Now',
                               textSize: 20),

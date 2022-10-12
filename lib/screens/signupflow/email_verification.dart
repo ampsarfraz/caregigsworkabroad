@@ -84,6 +84,7 @@ class EmailVerification extends GetWidget<SignUpServices> {
                         buttonColor: AppTheme.loginScreenPrimaryColor,
                         onPress: () {
                           Get.focusScope!.unfocus();
+                          Get.toNamed('HomePage');
                         },
                         buttonText: 'Submit',
                         textSize: 20),
