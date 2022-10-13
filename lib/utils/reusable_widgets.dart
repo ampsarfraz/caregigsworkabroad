@@ -192,18 +192,21 @@ Widget outlineButton({
     );
 
 //divider widgets
-Widget verticalDividerWidget(giveColor) => SizedBox(
-      height: 20,
+Widget verticalDividerWidget(giveColor, double giveThickness,
+        {double giveHeight = 30}) =>
+    SizedBox(
+      height: giveHeight,
       child: VerticalDivider(
-        thickness: 2,
+        thickness: giveThickness,
         color: giveColor,
       ),
     );
 
-Widget horizontalDividerWidget(Color giveColor) => SizedBox(
+Widget horizontalDividerWidget(Color giveColor, double giveThickness) =>
+    SizedBox(
       width: Get.width,
       child: Divider(
-        thickness: 4,
+        thickness: giveThickness,
         color: giveColor,
       ),
     );
@@ -237,6 +240,7 @@ Widget customContainer(
     double topRight = 12,
     double bottomRight = 12,
     double bottomLeft = 12,
+    bool shadow = false,
     bool top = true,
     bool bottom = true,
     required Widget containerChild}) {
@@ -245,6 +249,15 @@ Widget customContainer(
     width: giveWidth,
     decoration: BoxDecoration(
         color: giveColor,
+        boxShadow: [
+          BoxShadow(
+              offset: const Offset(0, 3),
+              color: shadow
+                  ? AppTheme.commonTextColor.withOpacity(0.1)
+                  : Colors.transparent,
+              spreadRadius: 2,
+              blurRadius: 3)
+        ],
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(
               cornerRadius(top, topLeft),
