@@ -1,7 +1,7 @@
 import '../../utils/common_imports.dart';
 
-class StudyScreen extends StatelessWidget {
-  const StudyScreen({super.key});
+class ProcessScreen extends StatelessWidget {
+  const ProcessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

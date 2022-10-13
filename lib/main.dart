@@ -10,11 +10,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(GlobalService(), permanent: true);
   await GlobalService.to.getUserDataOnInit();
-  runApp(const MyApp());
+  runApp(const WorkAbroadApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class WorkAbroadApp extends StatelessWidget {
+  const WorkAbroadApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

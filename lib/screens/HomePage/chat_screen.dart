@@ -1,7 +1,7 @@
 import '../../utils/common_imports.dart';
 
-class GroupsScreen extends StatelessWidget {
-  const GroupsScreen({super.key});
+class ChatScreen extends StatelessWidget {
+  const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

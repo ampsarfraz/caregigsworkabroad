@@ -9,7 +9,7 @@ class HomeNavBar extends GetWidget<NavBarController> {
   Widget build(BuildContext context) {
     return annotedRegionLightIcon(
       Obx(
-        (() => Scaffold(
+        () => Scaffold(
             backgroundColor: Colors.white,
             body: controller.children[controller.currentIndex.value],
             bottomNavigationBar: Visibility(
@@ -34,23 +34,23 @@ class HomeNavBar extends GetWidget<NavBarController> {
                       label: "Home",
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.shopping_cart_outlined),
-                      label: "Groups",
+                      icon: Icon(Icons.message_outlined),
+                      label: "Chat",
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
-                        Icons.home_outlined,
+                        Icons.padding_outlined,
                       ),
-                      label: "Jobs",
+                      label: "Process",
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
-                        Icons.person_outline,
+                        Icons.menu_rounded,
                       ),
                       label: "More",
                     ),
                   ]),
-            ))),
+            )),
       ),
     );
   }

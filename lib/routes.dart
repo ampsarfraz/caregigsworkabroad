@@ -3,7 +3,7 @@ import 'package:caregigsworkabroad/screens/_screen_bindindgs/home_screen_binding
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/login_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/nav_bar_binding.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/signup_screen_bindings.dart';
-import 'package:caregigsworkabroad/screens/HomePage/home_screen.dart';
+import 'package:caregigsworkabroad/screens/HomePage/HomeView/home_screen.dart';
 import 'package:caregigsworkabroad/screens/login_screen.dart';
 import 'package:caregigsworkabroad/screens/signupflow/email_verification.dart';
 import 'package:caregigsworkabroad/screens/signupflow/signup_screen.dart';
