@@ -128,7 +128,7 @@ class FeedContainer extends GetWidget<HomeScreenController> {
   }
 }
 
-class BeatBoolean extends GetxController {
+class BeatBoolean {
   final int no;
   RxBool selected = false.obs;
   BeatBoolean(this.no);

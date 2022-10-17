@@ -1,7 +1,11 @@
+import 'package:caregigsworkabroad/screens/HomePage/HomeView/HomeWidgets/FeedView/comments.dart';
+import 'package:caregigsworkabroad/screens/HomePage/HomeView/HomeWidgets/FeedView/replies.dart';
 import 'package:caregigsworkabroad/screens/HomePage/nav_bar.dart';
+import 'package:caregigsworkabroad/screens/_screen_bindindgs/comments_view_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/home_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/login_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/nav_bar_binding.dart';
+import 'package:caregigsworkabroad/screens/_screen_bindindgs/reply_view_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/signup_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/HomePage/HomeView/home_screen.dart';
 import 'package:caregigsworkabroad/screens/login_screen.dart';
@@ -13,8 +17,10 @@ class Routes {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String emailVerification = '/EmailVerification';
-  static const String homePage = '/HomePage';
+  static const String homePageNav = '/HomePage';
   static const String homeScreen = '/HomeScreen';
+  static const String comments = '/comments';
+  static const String replies = '/replies';
 }
 
 class AppPages {
@@ -32,12 +38,20 @@ class AppPages {
       page: () => const EmailVerification(),
     ),
     GetPage(
-        name: Routes.homePage,
+        name: Routes.homePageNav,
         page: () => const HomeNavBar(),
         binding: NavBarBinding()),
     GetPage(
         name: Routes.homeScreen,
         page: () => const HomeScreen(),
         binding: HomeScreenBindings()),
+    GetPage(
+        name: Routes.comments,
+        page: () => const CommentsPage(),
+        binding: CommentsViewBindings()),
+    GetPage(
+        name: Routes.replies,
+        page: () => const RepliesPage(),
+        binding: ReplyViewBindings()),
   ];
 }

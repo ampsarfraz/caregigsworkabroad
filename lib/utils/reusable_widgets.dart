@@ -26,22 +26,25 @@ Widget annotedRegionLightIcon(Widget givechild) =>
     );
 
 Widget verticalSpacing(double giveHeigh) => SizedBox(
-      height: giveHeigh,
+      height: giveHeigh.sp,
     );
 
 Widget horizontalSpacing(double giveWidth) => SizedBox(
-      width: giveWidth,
+      width: giveWidth.sp,
     );
 
-Widget iconWidget(giveIcon, Color? giveColor, double? giveSize) => Icon(
+Widget iconWidget(IconData giveIcon, Color? giveColor, double? giveSize) =>
+    Icon(
       giveIcon,
       color: giveColor,
       size: giveSize,
     );
 
-Widget backArrow() => IconButton(
+Widget backArrow(
+        {double giveIconSize = 25, Color giveIconColor = Colors.black}) =>
+    IconButton(
       onPressed: (() => Get.back()),
-      icon: iconWidget(Icons.arrow_back, null, 25),
+      icon: iconWidget(Icons.arrow_back_ios, giveIconColor, giveIconSize.sp),
     );
 
 // text widget using google fonts
@@ -53,19 +56,30 @@ Widget text({
   double? textHeight,
   String fontfamily = 'Baloo 2',
 }) =>
-    Text(
-      giveText,
-      textAlign: TextAlign.start,
-      style: GoogleFonts.getFont(
-        fontfamily,
-        textStyle: TextStyle(
-          color: textColor,
-          fontSize: fontsize.sp,
-          fontWeight: fontweight,
-          height: textHeight,
-        ),
-      ),
-    );
+    Text(giveText,
+        textAlign: TextAlign.start,
+        style: textStyle(
+            fontfamily: fontfamily,
+            fontsize: fontsize,
+            fontweight: fontweight,
+            textColor: textColor,
+            textHeight: textHeight));
+
+TextStyle textStyle({
+  FontWeight? fontweight,
+  Color? textColor,
+  double? textHeight,
+  String fontfamily = 'Baloo 2',
+  double? fontsize,
+}) {
+  return GoogleFonts.getFont(fontfamily,
+      textStyle: TextStyle(
+        color: textColor,
+        fontSize: fontsize!.sp,
+        fontWeight: fontweight,
+        height: textHeight,
+      ));
+}
 
 // Alignment widgets
 Widget centerAlign(giveChild) => Align(
@@ -88,11 +102,17 @@ Widget textField(
         {required TextEditingController fieldController,
         required String giveHint,
         required void Function(String)? onFieldEntry,
+        bool autofocus = false,
+        double lableTextSize = 15,
         Color labelColor = Colors.transparent,
         Color borderColor = Colors.transparent,
         double? giveHeight,
         double? giveWidth,
         bool alignLabelasHint = false,
+        Widget? suffixWidget,
+        Widget? prefixWidget,
+        FocusNode? fieldFocusNode,
+        void Function()? onFieldTap,
         Color backgroundColor = Colors.white}) =>
     Container(
       height: 60.sp,
@@ -100,14 +120,22 @@ Widget textField(
           color: backgroundColor, borderRadius: BorderRadius.circular(12)),
       width: giveWidth,
       child: TextFormField(
+        onTap: onFieldTap,
+        focusNode: fieldFocusNode,
+        autofocus: false,
         onChanged: onFieldEntry,
         controller: fieldController,
         decoration: InputDecoration(
+          prefixIcon: prefixWidget,
+          suffixIcon: suffixWidget,
           floatingLabelBehavior: alignLabelasHint
               ? FloatingLabelBehavior.never
               : FloatingLabelBehavior.auto,
           alignLabelWithHint: alignLabelasHint,
-          label: text(giveText: giveHint, textColor: labelColor, fontsize: 15),
+          label: text(
+              giveText: giveHint,
+              textColor: labelColor,
+              fontsize: lableTextSize.sp),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(7),

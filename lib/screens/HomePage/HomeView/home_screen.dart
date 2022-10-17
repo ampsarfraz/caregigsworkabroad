@@ -6,7 +6,7 @@ import 'package:caregigsworkabroad/utils/common_imports.dart';
 import 'package:caregigsworkabroad/screens/_screen_controllers/home_screen_controller.dart';
 
 import 'HomeWidgets/create_post.dart';
-import 'HomeWidgets/feed.dart';
+import 'HomeWidgets/FeedView/feed.dart';
 
 class HomeScreen extends GetWidget<HomeScreenController> {
   const HomeScreen({super.key});
