@@ -271,7 +271,7 @@ Widget customContainer(
     bool shadow = false,
     bool top = true,
     bool bottom = true,
-    required Widget containerChild}) {
+    required Widget? containerChild}) {
   return Container(
     height: giveHeight,
     width: giveWidth,

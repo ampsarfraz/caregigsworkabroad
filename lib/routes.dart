@@ -1,5 +1,6 @@
 import 'package:caregigsworkabroad/screens/HomePage/HomeView/HomeWidgets/FeedView/comments.dart';
 import 'package:caregigsworkabroad/screens/HomePage/HomeView/HomeWidgets/FeedView/replies.dart';
+import 'package:caregigsworkabroad/screens/HomePage/HomeView/chat_view/user_chat_screen.dart';
 import 'package:caregigsworkabroad/screens/HomePage/nav_bar.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/comments_view_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/home_screen_bindings.dart';
@@ -8,6 +9,7 @@ import 'package:caregigsworkabroad/screens/_screen_bindindgs/nav_bar_binding.dar
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/reply_view_bindings.dart';
 import 'package:caregigsworkabroad/screens/_screen_bindindgs/signup_screen_bindings.dart';
 import 'package:caregigsworkabroad/screens/HomePage/HomeView/home_screen.dart';
+import 'package:caregigsworkabroad/screens/_screen_bindindgs/user_chat_bindings.dart';
 import 'package:caregigsworkabroad/screens/login_screen.dart';
 import 'package:caregigsworkabroad/screens/signupflow/email_verification.dart';
 import 'package:caregigsworkabroad/screens/signupflow/signup_screen.dart';
@@ -21,6 +23,7 @@ class Routes {
   static const String homeScreen = '/HomeScreen';
   static const String comments = '/comments';
   static const String replies = '/replies';
+  static const String userchat = '/userchat';
 }
 
 class AppPages {
@@ -53,5 +56,9 @@ class AppPages {
         name: Routes.replies,
         page: () => const RepliesPage(),
         binding: ReplyViewBindings()),
+    GetPage(
+        name: Routes.userchat,
+        page: () => const UserChat(),
+        binding: UserChatBindings()),
   ];
 }

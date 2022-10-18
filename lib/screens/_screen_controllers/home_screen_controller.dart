@@ -9,15 +9,15 @@ class HomeScreenController extends GetxController {
   RxString imageString = ''.obs;
   ScrollController feedController = ScrollController();
   late ScrollDirection direction;
-
+  final PageStorageBucket pageStorageBucket = PageStorageBucket();
   reduceHeight() {
     if (hContainer.value > 0) {
       hContainer(hContainer.value - 5);
     }
   }
 
-  increaseHeight() {
-    if (hContainer.value < 100) {
+  increaseHeight(int offset) {
+    if (hContainer.value < 100 && offset < 150) {
       hContainer(hContainer.value + 5);
     }
   }
@@ -26,10 +26,12 @@ class HomeScreenController extends GetxController {
     feedController.addListener(() {
       //   print(pixels);
       int pixels = feedController.position.pixels.toInt();
+
       if (direction == ScrollDirection.reverse) {
         reduceHeight();
       } else if (direction == ScrollDirection.forward) {
-        increaseHeight();
+        increaseHeight(pixels);
+        //  print(pixels);
         if (pixels == 0) {
           hContainer(100);
         }
