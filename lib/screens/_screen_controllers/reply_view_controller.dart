@@ -11,6 +11,8 @@ class ReplyViewController extends GetxController {
     replyFocusNode.requestFocus();
   }
 
+  RxBool viewMore = false.obs;
+
   @override
   void onInit() {
     reply = TextEditingController().obs;

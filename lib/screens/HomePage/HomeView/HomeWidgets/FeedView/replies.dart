@@ -25,7 +25,7 @@ class RepliesPage extends GetWidget<ReplyViewController> {
             padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
             child: ListView.separated(
               shrinkWrap: true,
-              itemCount: data.length - 3,
+              itemCount: data.length - 6,
               itemBuilder: (context, i) {
                 return SizedBox(
                   child: Column(
@@ -39,9 +39,50 @@ class RepliesPage extends GetWidget<ReplyViewController> {
                             fit: FlexFit.tight,
                             child: SizedBox(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   userNameandComment(),
-                                  reactToComment(controller, i, data[i])
+                                  reactToComment(controller, i, data[i]),
+                                  verticalSpacing(10),
+                                  Visibility(
+                                      visible: i % 2 == 0,
+                                      child: Obx(
+                                        () => ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemCount:
+                                              controller.viewMore.value ? 5 : 1,
+                                          shrinkWrap: true,
+                                          itemBuilder: (c, i) {
+                                            return commentReplies(
+                                                data: [1, 2],
+                                                view: controller.viewMore);
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context,
+                                                  int index) {
+                                            return verticalSpacing(5);
+                                          },
+                                        ),
+                                      )),
+                                  verticalSpacing(5),
+                                  Obx(() => Visibility(
+                                        visible: controller.viewMore.value,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 10.sp),
+                                          child: InkWell(
+                                            onTap: () {
+                                              controller.viewMore(false);
+                                            },
+                                            child: text(
+                                                giveText: 'View less',
+                                                fontsize: 12,
+                                                fontweight: FontWeight.w500,
+                                                textColor:
+                                                    Colors.grey.shade700),
+                                          ),
+                                        ),
+                                      ))
                                 ],
                               ),
                             ),

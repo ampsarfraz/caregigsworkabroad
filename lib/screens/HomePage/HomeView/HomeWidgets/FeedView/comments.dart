@@ -39,28 +39,57 @@ class CommentsPage extends GetWidget<CommentsViewController> {
                             fit: FlexFit.tight,
                             child: SizedBox(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   userNameandComment(),
                                   reactToComment(controller, i, data[i]),
                                   verticalSpacing(5),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 10.sp,
-                                    ),
-                                    child: ListView.separated(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: 5,
-                                      shrinkWrap: true,
-                                      itemBuilder: (c, i) {
-                                        return commentReplies();
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) {
-                                        return verticalSpacing(5);
-                                      },
-                                    ),
+                                  Visibility(
+                                    visible: i % 2 != 0,
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 10.sp,
+                                        ),
+                                        child: Obx(
+                                          () => ListView.separated(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemCount: controller.viewMore.value
+                                                ? 5
+                                                : 1,
+                                            shrinkWrap: true,
+                                            itemBuilder: (c, i) {
+                                              return commentReplies(
+                                                  isBackgroundShown: true,
+                                                  data: [1, 2],
+                                                  view: controller.viewMore);
+                                            },
+                                            separatorBuilder:
+                                                (BuildContext context,
+                                                    int index) {
+                                              return verticalSpacing(5);
+                                            },
+                                          ),
+                                        )),
                                   ),
+                                  verticalSpacing(5),
+                                  Obx(() => Padding(
+                                        padding: EdgeInsets.only(left: 10.sp),
+                                        child: Visibility(
+                                          visible: controller.viewMore.value,
+                                          child: InkWell(
+                                            onTap: () {
+                                              controller.viewMore(false);
+                                            },
+                                            child: text(
+                                                giveText: 'View less',
+                                                fontsize: 12,
+                                                fontweight: FontWeight.w500,
+                                                textColor:
+                                                    Colors.grey.shade700),
+                                          ),
+                                        ),
+                                      ))
                                 ],
                               ),
                             ),
@@ -88,60 +117,87 @@ class CommentsPage extends GetWidget<CommentsViewController> {
   }
 }
 
-Widget commentReplies({bool isBackgroundShown = false}) {
-  return customContainer(
-    giveHeight: null,
-    giveWidth: null,
-    giveColor: isBackgroundShown ? Colors.grey.shade50 : Colors.transparent,
-    topRight: 10,
-    topLeft: 10,
-    bottomLeft: 10,
-    bottomRight: 10,
-    containerChild: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        userProfile(
-          giveRadius: 18,
-        ),
-        horizontalSpacing(5),
-        Flexible(
-          fit: FlexFit.tight,
-          child: SizedBox(
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Roseline',
-                    style: textStyle(
-                      fontsize: 14,
-                      fontweight: FontWeight.w600,
-                      textColor: Colors.black87,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' @Delphine',
-                    style: textStyle(
-                      fontsize: 14,
-                      fontweight: FontWeight.normal,
-                      textColor: AppTheme.primaryColor,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' $commentText',
-                    style: textStyle(
-                      fontsize: 14,
-                      fontweight: FontWeight.normal,
-                      textColor: Colors.black87,
-                    ),
-                  ),
-                ],
+Widget commentReplies(
+    {bool isBackgroundShown = false,
+    required List data,
+    required RxBool view}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      customContainer(
+        giveHeight: null,
+        giveWidth: null,
+        giveColor: isBackgroundShown ? Colors.grey.shade50 : Colors.transparent,
+        topRight: 10,
+        topLeft: 10,
+        bottomLeft: 10,
+        bottomRight: 10,
+        containerChild: Padding(
+          padding: EdgeInsets.all(5.sp),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              userProfile(
+                giveRadius: 18,
               ),
-            ),
+              horizontalSpacing(5),
+              Flexible(
+                fit: FlexFit.tight,
+                child: SizedBox(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Roseline',
+                          style: textStyle(
+                            fontsize: 14,
+                            fontweight: FontWeight.w600,
+                            textColor: Colors.black87,
+                          ),
+                        ),
+                        TextSpan(
+                          text: ' @Delphine',
+                          style: textStyle(
+                            fontsize: 14,
+                            fontweight: FontWeight.normal,
+                            textColor: AppTheme.primaryColor,
+                          ),
+                        ),
+                        TextSpan(
+                          text: ' $commentText',
+                          style: textStyle(
+                            fontsize: 14,
+                            fontweight: FontWeight.normal,
+                            textColor: Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-        )
-      ],
-    ),
+        ),
+      ),
+      verticalSpacing(10),
+      Obx(
+        () => Visibility(
+          visible: data.length > 1 && view.value == false,
+          child: InkWell(
+            onTap: () {
+              view(true);
+            },
+            child: text(
+                giveText: 'View more replies...',
+                fontsize: 12,
+                fontweight: FontWeight.w500,
+                textColor: Colors.grey.shade700),
+          ),
+        ),
+      ),
+    ],
   );
 }
 
@@ -279,6 +335,7 @@ String commentText =
 class CommentBoolean {
   final int no;
   RxBool selected = false.obs;
+  RxBool showMoreReply = false.obs;
   CommentBoolean(this.no);
 }
 
@@ -287,5 +344,10 @@ List<CommentBoolean> data = [
   CommentBoolean(1),
   CommentBoolean(2),
   CommentBoolean(3),
-  CommentBoolean(4)
+  CommentBoolean(4),
+  CommentBoolean(5),
+  CommentBoolean(6),
+  CommentBoolean(7),
 ];
+
+List replyData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];

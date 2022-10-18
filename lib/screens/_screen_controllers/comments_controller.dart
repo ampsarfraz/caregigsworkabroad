@@ -6,12 +6,15 @@ class CommentsViewController extends GetxController {
   // replyUsername(userTag) {
   //   reply.value.text = '@$userTag';
   // }
-
+  RxBool showMoreReplies = false.obs;
   @override
   void onInit() {
     comment = TextEditingController().obs;
     super.onInit();
   }
+
+  RxBool viewMore = false.obs;
+  List replyData = [1, 2, 3, 4];
 
   @override
   void dispose() {

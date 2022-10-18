@@ -8,7 +8,7 @@ class FeedImageWidget extends GetWidget<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: false,
+      visible: true,
       child: InkWell(
         onTap: () {
           NavBarController.to.hideNavBar(!NavBarController.to.hideNavBar.value);
