@@ -2,7 +2,7 @@ import 'package:caregigsworkabroad/screens/HomePage/process_screen.dart';
 import 'package:caregigsworkabroad/screens/HomePage/study_screen.dart';
 
 import '../../utils/common_imports.dart';
-import '../HomePage/chat_screen.dart';
+import '../HomePage/HomeView/chat_view/chat_screen.dart';
 import '../HomePage/HomeView/home_screen.dart';
 
 class NavBarController extends GetxService {
