@@ -20,6 +20,14 @@ class TopContainer extends GetWidget<HomeScreenController> {
                 children: [
                   topContainerIconButton(
                       onPress: () {}, buttonIcon: Icons.search),
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.loose,
+                    child: Image.asset(
+                      'assets/caregigs_logo_1024 1.png',
+                      scale: 10,
+                    ),
+                  ),
                   topContainerIconButton(
                       onPress: () {},
                       buttonIcon: Icons.notifications_none_outlined),
