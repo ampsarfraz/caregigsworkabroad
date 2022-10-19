@@ -66,9 +66,10 @@ class UserChat extends GetWidget<UserChatController> {
               padding: EdgeInsets.symmetric(vertical: 10.sp),
               child: ListView.separated(
                 shrinkWrap: true,
-                itemCount: 4,
+                itemCount: chatData.length,
                 itemBuilder: (c, i) {
-                  return i == 0
+                  return chatData[i].messageType == 'image' &&
+                          chatData[i].isMessageSent == false
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -103,7 +104,8 @@ class UserChat extends GetWidget<UserChatController> {
                             horizontalSpacing(10)
                           ],
                         )
-                      : i == 1
+                      : chatData[i].messageType == 'text' &&
+                              chatData[i].isMessageSent == false
                           ? Padding(
                               padding: EdgeInsets.only(left: Get.width * 0.4),
                               child: Row(
@@ -134,7 +136,8 @@ class UserChat extends GetWidget<UserChatController> {
                                 ],
                               ),
                             )
-                          : i == 2
+                          : chatData[i].messageType == 'image' &&
+                                  chatData[i].isMessageSent == true
                               ? Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -170,7 +173,8 @@ class UserChat extends GetWidget<UserChatController> {
                                     ),
                                   ],
                                 )
-                              : i == 3
+                              : chatData[i].messageType == 'text' &&
+                                      chatData[i].isMessageSent == true
                                   ? Padding(
                                       padding: EdgeInsets.only(
                                           right: Get.width * 0.4),
@@ -295,3 +299,17 @@ class ExpandableImageChatScreen extends GetWidget<UserChatController> {
     );
   }
 }
+
+class ChatData {
+  final String messageType;
+  final bool isMessageSent;
+
+  ChatData({required this.messageType, required this.isMessageSent});
+}
+
+List<ChatData> chatData = [
+  ChatData(messageType: 'image', isMessageSent: false),
+  ChatData(messageType: 'text', isMessageSent: false),
+  ChatData(messageType: 'image', isMessageSent: true),
+  ChatData(messageType: 'text', isMessageSent: true),
+];
