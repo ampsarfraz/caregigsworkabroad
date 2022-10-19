@@ -30,6 +30,7 @@ class WorkAbroadApp extends StatelessWidget {
                   MaterialColor(AppTheme.primaryColorCode, appPrimaryColor)),
           initialBinding: InitialBindings(),
           initialRoute: GlobalService.to.initialRoute(),
+          // home: const ,
           getPages: AppPages.pages,
         );
       },

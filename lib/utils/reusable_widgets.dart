@@ -106,7 +106,7 @@ Widget textField(
         double lableTextSize = 15,
         Color labelColor = Colors.transparent,
         Color borderColor = Colors.transparent,
-        double? giveHeight,
+        double? giveHeight = 60,
         double? giveWidth,
         bool alignLabelasHint = false,
         Widget? suffixWidget,
@@ -115,7 +115,7 @@ Widget textField(
         void Function()? onFieldTap,
         Color backgroundColor = Colors.white}) =>
     Container(
-      height: 60.sp,
+      height: giveHeight!.sp,
       decoration: BoxDecoration(
           color: backgroundColor, borderRadius: BorderRadius.circular(12)),
       width: giveWidth,
@@ -167,21 +167,22 @@ Widget button(
         required onPress,
         required String buttonText,
         double? buttonWidth,
-        double? buttonHeight,
+        double buttonHeight = 30,
         double borderWidth = 0,
+        double borderRadius = 4,
         Color borderColor = Colors.white,
         Color buttonTextColor = Colors.white,
         double textSize = 17,
         FontWeight textWieght = FontWeight.normal}) =>
     SizedBox(
-      height: buttonHeight,
+      height: buttonHeight.sp,
       width: buttonWidth,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(borderRadius),
           ),
         ),
         onPressed: onPress,
