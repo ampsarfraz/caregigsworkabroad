@@ -1,3 +1,5 @@
+import 'package:caregigsworkabroad/screens/HomePage/HomeView/chat_view/send_new_message.dart';
+
 import '../../../../utils/common_imports.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -22,7 +24,9 @@ class ChatScreen extends StatelessWidget {
             text(giveText: 'Kimara', fontweight: FontWeight.w500, fontsize: 18),
         actions: [
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              sendNewMessageBottomSheet();
+            },
             child: Image.asset(
               'assets/edit_square_FILL0_wght400_GRAD0_opsz48.png',
               height: 25,
@@ -37,19 +41,20 @@ class ChatScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10.sp),
             child: Column(
               children: [
-                verticalSpacing(20),
+                verticalSpacing(10),
                 textField(
                   backgroundColor: Colors.grey.shade100,
                   fieldController: TextEditingController(),
                   onFieldEntry: null,
                   giveHint: 'Search',
                   labelColor: AppTheme.commonTextColor,
+                  alignLabelasHint: true,
                   prefixWidget: Icon(
                     Icons.search,
                     color: AppTheme.primaryColor,
                   ),
                 ),
-                verticalSpacing(20),
+                //verticalSpacing(10),
                 Expanded(
                     child: ListView.builder(
                         itemCount: 10,
