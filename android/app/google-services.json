@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "791365606435",
+    "project_id": "caregigsworkabroad",
+    "storage_bucket": "caregigsworkabroad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791365606435:android:7cbbafdb25cf9d36996596",
+        "android_client_info": {
+          "package_name": "com.example.caregigsworkabroad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791365606435-ak9bp5kdva3fo2j93dc1s3p4u845m6n6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfkY0FjqVvBe_fVUTWZ5kFP3i5YBnpU9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791365606435-ak9bp5kdva3fo2j93dc1s3p4u845m6n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

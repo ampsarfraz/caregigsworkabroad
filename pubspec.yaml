@@ -54,6 +54,15 @@ dependencies:
   otp_text_field: ^1.1.3
   #dropdown_button
   dropdown_button2: ^1.8.5
+  #for asking permission
+  permission_handler: ^10.1.0
+  #pick image from gallery
+  image_picker: ^0.8.6
+  #notification plugin
+  #awesome_notifications: ^0.7.3
+  #notification
+  firebase_core: ^2.0.0
+  firebase_messaging: ^14.0.1
 
 dev_dependencies:
   flutter_test:
