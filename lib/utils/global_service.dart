@@ -1,5 +1,6 @@
 import 'package:caregigsworkabroad/services/localstorage.dart';
 import 'package:get/get.dart';
+import '../services/notification_services.dart';
 
 class GlobalService extends GetxService {
   LocalStorage localStorage = LocalStorage();
@@ -36,5 +37,32 @@ class GlobalService extends GetxService {
     } else {
       return 'HomePage';
     }
+  }
+
+  RxString notificationTitle = 'No Title'.obs;
+  RxString notificationBody = 'No Body'.obs;
+  RxString notificationData = 'No Data'.obs;
+
+  _changeData(String msg) {
+    print(msg);
+    return notificationData(msg);
+  }
+
+  _changeBody(String msg) {
+    print(msg);
+    return notificationBody(msg);
+  }
+
+  _changeTitle(String msg) => notificationTitle(msg);
+
+  @override
+  void onInit() {
+    final firebaseMessaging = FCM();
+    firebaseMessaging.setNotifications();
+
+    firebaseMessaging.streamCtlr.stream.listen(_changeData);
+    firebaseMessaging.bodyCtlr.stream.listen(_changeBody);
+    firebaseMessaging.titleCtlr.stream.listen(_changeTitle);
+    super.onInit();
   }
 }
