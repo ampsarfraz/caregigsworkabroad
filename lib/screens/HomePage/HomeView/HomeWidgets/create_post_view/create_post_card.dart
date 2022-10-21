@@ -1,4 +1,4 @@
-import '../../../../utils/common_imports.dart';
+import '../../../../../utils/common_imports.dart';
 
 Widget createPostCard() {
   return Positioned(
@@ -24,11 +24,16 @@ Widget createPostCard() {
             Flexible(
               fit: FlexFit.tight,
               child: textField(
+                  onFieldTap: () {
+                    Get.toNamed('CreatePost');
+                  },
                   backgroundColor: AppTheme.primaryColor.withOpacity(0.1),
                   labelColor: AppTheme.commonTextColor,
                   fieldController: TextEditingController(),
                   giveHint: 'Write something here...',
+                  isFieldReadOnly: true,
                   alignLabelasHint: true,
+                  fieldMaxLines: null,
                   onFieldEntry: null),
             )
           ],
