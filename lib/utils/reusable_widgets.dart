@@ -113,13 +113,18 @@ Widget textField(
         Widget? prefixWidget,
         FocusNode? fieldFocusNode,
         void Function()? onFieldTap,
+        int? fieldMaxLines = 1,
+        bool isFieldReadOnly = false,
         Color backgroundColor = Colors.white}) =>
     Container(
-      height: giveHeight!.sp,
+      height: giveHeight,
       decoration: BoxDecoration(
           color: backgroundColor, borderRadius: BorderRadius.circular(12)),
       width: giveWidth,
       child: TextFormField(
+        readOnly: isFieldReadOnly,
+        textInputAction: TextInputAction.newline,
+        maxLines: fieldMaxLines,
         onTap: onFieldTap,
         focusNode: fieldFocusNode,
         autofocus: false,
@@ -132,10 +137,9 @@ Widget textField(
               ? FloatingLabelBehavior.never
               : FloatingLabelBehavior.auto,
           alignLabelWithHint: alignLabelasHint,
-          label: text(
-              giveText: giveHint,
-              textColor: labelColor,
-              fontsize: lableTextSize.sp),
+          hintStyle:
+              textStyle(textColor: labelColor, fontsize: lableTextSize.sp),
+          hintText: giveHint,
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(
               Radius.circular(7),
