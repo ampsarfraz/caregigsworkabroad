@@ -15,13 +15,16 @@ class FeedImageWidget extends GetWidget<HomeScreenController> {
           controller.showImage(!controller.showImage.value);
           controller.imageString('assets/caregigs_logo_1024 1.jpg');
         },
-        child: Container(
-          height: 300.sp,
-          width: 400.sp,
-          color: Colors.white,
-          child: Image.asset(
-            'assets/caregigs_logo_1024 1.jpg',
-            fit: BoxFit.contain,
+        child: AspectRatio(
+          aspectRatio: 3 / 4,
+          child: Container(
+            height: 300.sp,
+            width: 400.sp,
+            color: Colors.white,
+            child: Image.asset(
+              'assets/caregigs_logo_1024 1.jpg',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),
