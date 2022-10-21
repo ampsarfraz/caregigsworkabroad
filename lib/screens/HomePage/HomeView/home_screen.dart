@@ -5,7 +5,7 @@ import 'package:caregigsworkabroad/screens/_screen_controllers/nav_bar_controlle
 import 'package:caregigsworkabroad/utils/common_imports.dart';
 import 'package:caregigsworkabroad/screens/_screen_controllers/home_screen_controller.dart';
 
-import 'HomeWidgets/create_post.dart';
+import 'HomeWidgets/create_post_view/create_post_card.dart';
 import 'HomeWidgets/FeedView/feed.dart';
 
 class HomeScreen extends GetWidget<HomeScreenController> {
